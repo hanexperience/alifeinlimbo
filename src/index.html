@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="./style.css" />
+        <!-- HTML Meta Tags -->
+        <title>HERE & NOW - EDITION 4</title>
+        <meta name="description" content="The Passage is an interactive experience where your journey and choices create your 1/1 entry token in real time. ">
+        <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer@1.10.1/dist/model-viewer-umd.min.js"></script>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand">
+                        <span id="navbar-brand"><img id="logo" src="./assets/logo.svg" alt="" /></span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul id="menu-main-menu" class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children dropdown nav-item nav-item-50">
+                                <a href="#editions" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Editions</a>
+                                <ul class="dropdown-menu depth_0">
+                                    <li id="menu-item-54" class="nav-item"><a href="https://hereandnow.events/#edition-1" class="dropdown-item active">Edition 4</a></li>
+                                    <li id="menu-item-52" class="nav-item"><a href="https://hereandnow.events/#edition-2" class="dropdown-item active">Edition 3</a></li>
+                                    <li id="menu-item-53" class="nav-item"><a href="https://hereandnow.events/#edition-3" class="dropdown-item active">Edition 2</a></li>
+                                    <li id="menu-item-51" class="nav-item"><a href="https://hereandnow.events/#edition-4" class="dropdown-item active">Edition 1</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="https://www.thepassage.space/" class="nav-link">MINT OPEN</a></li>
+                            <li class="nav-item"><a href="https://hereandnow.events/roadmap/" class="nav-link">1/1 JOURNEYS</a></li>
+                            <li class="nav-item"><a href="https://hereandnow.events/tickets-2/" class="nav-link">ENTRY TOKENS</a></li>
+                            <li class="nav-item"><a href="https://hereandnow.events/utilityboosters/" class="nav-link">UTILITY BOOSTERS</a></li>
+                        </ul>
+                        <span class="navbar-text">
+                            <div class="socials-container">
+                                <a target="blank" class="gradientHover" href="https://discord.com/invite/7zD2uT6ne3">
+                                    <i class="bi bi-discord"></i>
+                                </a>
+                                <a target="blank" class="gradientHover" href="https://twitter.com/hereandnow_exp">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+            <span v-cloak id="sync-container">
+                <button v-if="walletAddress" v-on:click="resetWallet" class="han-btn">
+                    <span>
+                        <p>UNSYNC</p>
+                    </span>
+                </button>
+                <button v-else v-on:click="syncWallet" class="han-btn">
+                    <span>
+                        <p>SYNC</p>
+                    </span>
+                </button>
+            </span>
+            <div class="container">
+                <div class="row">
+                    <div v-if="walletAddress" class="passage-btn-inner-container d-flex justify-content-around align-items-center row">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="d-flex flex-column justify-center align-items-center">
+                                <button v-on:click="openModal(1)" class="han-btn">
+                                    <span>
+                                        <p>ENTER THE EDITION 4</p>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button v-else v-on:click="syncWallet" class="han-btn">
+                        <span>
+                            <p>SYNC</p>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <footer class="py-4 mt-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm d-flex justify-content-center align-items-center">
+                            <div class="socials-container">
+                                <a class="gradientHover" target="blank" href="https://discord.com/invite/7zD2uT6ne3">
+                                    <i class="bi bi-discord"></i>
+                                </a>
+                                <a class="gradientHover" target="blank" href="https://twitter.com/hereandnow_exp">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm d-flex justify-content-center align-items-center"></div>
+                        <div class="col-sm d-flex justify-content-center align-items-center">
+                            <p class="footer-text">Here & Now</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Passage modal -->
+            <div id="passageModal" class="frameContainer">
+                <span class="closeFrameContainer" v-on:click="closeModal">&times;</span>
+                <div class="frameContainerContent">
+                    <!-- Wallet check -->
+                    <div v-if="loadingTokens" class="text-center">
+                        <h3 class="gradientText">Scanning wallet...found {{tokenCount}} tokens</h3>
+                        <h4 class="gradientText" v-if="loadingMetadata && tokenCount > 0">Retrieving metadata for token {{currentMetadataRequest}}</h4>
+                    </div>
+                    <div v-else>
+                        <!-- Token selection UI -->
+                        <div v-if="!started" class="d-flex flex-column">
+                            <div v-if="!loadingTokens && EntryTokens.length > 0">
+                                <h1 class="gradientText">What was your favourite creation from The Passage?</h1>
+                                <div class="token-container">
+                                    <div v-for="token in EntryTokens" class="entry-token" v-bind:class="{ 'token-selected' : token.id === planetID }" v-on:click="planetID = token.id, updatePlanetMetadata()">
+                                        <div class="token-placeholder">
+                                            <img class="img-fluid" v-bind:src="token.httpThumbnailUri" alt="" />
+                                            <p>{{token.id}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <h3 class="gradientText">You have 0 Entry Tokens in this wallet</h3>
+                            </div>
+                            <div v-if="planetID" class="d-flex justify-content-center">
+                                <button v-on:click="start" class="han-btn my-5">
+                                    <span>
+                                        <p>Enter</p>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Passage iFrame -->
+                    <div v-show="started" class="passageFrameContainer">
+                        <iframe id="passageFrame" src="about:blank" frameborder="0" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                        <h3 class="gradientText">Press F to enter fullscreen</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
